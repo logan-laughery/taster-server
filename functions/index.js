@@ -11,6 +11,7 @@ const debugMode = true;
 
 // Query breweries with: https://url?query=search&hitsPerPage=3&page=0
 exports.breweries = functions.https.onRequest((req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const breweryUrl = functions.config().taster.basebreweryurl;
   const queryString = url.parse(req.url).query;
 
@@ -39,6 +40,7 @@ exports.breweries = functions.https.onRequest((req, res) => {
 
 // Query beers with: https://url?query=search
 exports.beers = functions.https.onRequest((req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const beerUrl = functions.config().taster.basebeerurl;
   const queryString = url.parse(req.url).query;
 
